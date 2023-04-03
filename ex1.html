@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="largura" id="largura"><br>
+        <input type="number" name="comprimento" id="comprimento"><br>
+        <input type="number" name="valor" id="valor"><br>
+        <input type="text" id="name" name="name"><br>
+        <input type="submit" value="Enviar"><br>
+        <input type="button" onclick="main();">
+    </form>
+
+    <div id="output">
+
+    </div>
+</body>
+</html>
+
+<script>
+    function main() {
+        var largura = parseFloat(document.querySelector("#largura").value);
+        var comprimento = parseFloat(document.querySelector("#comprimento").value);
+        var valor = parseFloat(document.querySelector("#valor").value);
+    
+        var area = comprimento * largura;
+        var preco = area * valor;
+        var html = document.getElementById('output').innerHTML;
+        console.log(preco);
+        console.log(area);
+    }
+</script>
