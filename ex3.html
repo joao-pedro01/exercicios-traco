@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercício 3</title>
 </head>
 <body>
+    <h1>Aplicação para informar idade média de 2 pessoas</h1>
     
+    <input type="text" name="input" id="nome1"><br>
+    <input type="number" name="input" id="idade1"><br>
+    <input type="text" name="input" id="nome2"><br>
+    <input type="number" name="input" id="idade2"><br>
+    <input type="submit" value="Enviar" onclick="main();">
+
+    <script>
+        function main() {
+            var nome = {
+                1: document.querySelector("#nome1").value,
+                2: document.querySelector("#nome2").value
+            };
+            var idade = {
+                1: document.querySelector("#idade1").value,
+                2: document.querySelector("#idade2").value
+            };
+            
+            console.log(nome[1]);
+        }
+    </script>
 </body>
 </html>
