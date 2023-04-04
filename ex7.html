@@ -14,6 +14,7 @@
         <input type="number" name="input" id="distPerc" placeholder="Digite a distância"><br><br>
         <label for="nome">Digite o combustível gasto:</label><br>
         <input type="number" name="input" id="combustGasto" placeholder="Digite o valor por hora"><br><br>
+        <input type="submit" value="Enviar" onclick="salario();">
     </div>
 
     <div id="return">
@@ -25,7 +26,9 @@
             const distPerc = parseInt(document.getElementById("distPerc").value);
             const combustGasto = parseFloat(document.getElementById("combustGasto").value);
 
-           
+           var consumoMed = distPerc / combustGasto;
+
+           console.log(consumoMed.toFixed(3));
         }
     </script>
 </body>
