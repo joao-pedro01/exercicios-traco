@@ -15,9 +15,9 @@ Horas trabalhadas: 60 -->
         <label for="nome">Digite nome:</label><br>
         <input type="text" name="input" id="nome" placeholder="Digite o nome"><br><br>
         <label for="nome">Digite valor por hora:</label><br>
-        <input type="number" name="input" id="nome" placeholder="Digite o valor por hora"><br><br>
+        <input type="number" name="input" id="valorHoras" placeholder="Digite o valor por hora"><br><br>
         <label for="nome">Digite as horas trabalhadas:</label><br>
-        <input type="number" name="input" id="nome" placeholder="Digite as horas trabalhadas"><br><br>
+        <input type="number" name="input" id="qntHoras" placeholder="Digite as horas trabalhadas"><br><br>
         <input type="submit" value="Enviar" onclick="salario();">
     </div>
 
@@ -27,7 +27,12 @@ Horas trabalhadas: 60 -->
     
     <script>
         function salario() {
-            
+            const nome = document.getElementById("nome").value;
+            const valorHoras = parseFloat(document.getElementById("valorHoras").value);
+            const qntHoras = parseInt(document.getElementById("qntHoras").value);
+            var salario = (valorHoras * qntHoras);
+
+            document.getElementById("return").innerHTML = `O pagamento para ${nome} deve ser ${salario.toFixed(2)}`;
         }
     </script>
 </body>
