@@ -7,6 +7,31 @@
     <title>Exercício 4</title>
 </head>
 <body>
+    <h1>Aplicação para calcular o troco da compra</h1>
+
+    <div class="form">
+        <label for="preco">Preço unitário do produto:</label><br>
+        <input type="text" name="input" id="preco" placeholder="Digite o preco"><br><br>
+        <label for="qntComprada">Quantidade comprada que foi:</label><br>
+        <input type="number" name="input" id="qntComprada" placeholder="Digite a quantidade"><br><br>
+        <label for="qntDinehiro">Digite quantidade de dinheiro recebido:</label><br>
+        <input type="text" name="input" id="qntDinehiro" placeholder="Digite a quantidade de dinheiro que foi recebido"><br><br>
+        <input type="submit" value="Enviar" onclick="calcTroco();">
+    </div>
+
+    <div id="return">
+
+    </div>
     
+    <script>
+        function calcTroco() {
+            const preco = parseFloat(document.getElementById("preco").value);
+            const qntComprada = parseInt(document.getElementById("qntComprada").value);
+            const qntDinheiroRecebido = parseFloat(document.getElementById("qntDinehiro").value);
+            var troco = (qntDinheiroRecebido - (preco * qntComprada)).toFixed(2);
+
+            document.getElementById("return").innerHTML = `Troco = ${troco}`;
+        }
+    </script>
 </body>
 </html>
