@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <h1>Aplicação para calcular o troco da compra</h1>
+
+    <div class="form">
+        <label for="raio">Preço unitário do produto:</label><br>
+        <input type="text" name="input" id="raio" placeholder="Digite o preco"><br><br>
+        <input type="submit" value="Enviar" onclick="raioCirculo();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function raioCirculo() {
+            const raio = parseFloat(document.getElementById("raio").value);
+            const pi = 3.14159;
+
+            var area = (pi * raio **2).toFixed(3);
+
+            document.getElementById("return").innerHTML = `Área = ${area}`;
+        }
+    </script>
+</body>
+</html>
