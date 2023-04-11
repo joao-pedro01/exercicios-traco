@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+</head>
+<body>
+    <h1>Aplicação para calcular a nota final do aluno</h1>
+
+    <div class="form">
+        <label for="medidaA">Digite a medida A:</label><br>
+        <input type="number" name="input" id="medidaA" placeholder="Digite a medida"><br><br>
+        <label for="medidaB">Digite a medida B:</label><br>
+        <input type="number" name="input" id="medidaB" placeholder="Digite medida"><br><br>
+        <label for="medidaC">Digite a medida C:</label><br>
+        <input type="number" name="input" id="medidaC" placeholder="Digite a medida"><br><br>
+        <input type="submit" value="Enviar" onclick="area();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function area() {
+            const medida = {
+                'a': parseInt(document.getElementById("medidaA").value),
+                'b': parseInt(document.getElementById("medidaB").value),
+                'c': parseInt(document.getElementById("medidaC").value)
+            };
+
+            
+        }
+    </script>
+</body>
+</html>
