@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 26</title>
+</head>
+<body>
+    <h1>Aplicação para exibir a quantidade de vogais</h1>
+
+    <div class="form">
+        <label for="string">Digite a palavra:</label>
+        <input type="text" required name="input" id="string" placeholder="Orangotango">
+        <input type="submit" value="Enviar" onclick="contadorVogais();">
+        <div class="return" id="return">
+            
+        </div>
+    </div>
+    
+    <script>
+        function contadorVogais() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const string = document.getElementById("string").value;
+            const str = string.toUpperCase();
+            var vogal = 0;
+            var consoante = 0;
+
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === 'A' ||  str[i] === 'E' || str[i] === 'I' ||str[i] === 'O' || str[i] === 'U') {
+                    vogal++;
+                }else {
+                    consoante++;
+                }
+            }
+                            
+            document.getElementById(`return`).innerHTML = `Vogal: ${vogal} <br>Consoantes: ${consoante}`;
+        }
+    </script>
+</body>
+</html>
