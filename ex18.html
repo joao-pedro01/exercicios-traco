@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 18</title>
+</head>
+<body>
+    <h1>Aplicação para converter a temperatura C/F</h1>
+
+    <div class="form">
+        <label for="escala">Digite a escala da temperatura: (C/F)</label>
+        <input type="text" name="input" id="escala" required placeholder="c">
+        <input type="submit" value="Enviar" onclick="converteTemperatura();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function converteTemperatura() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const escala = document.getElementById("escala").value.toLocaleUpperCase();
+            var temperatura = parseFloat(prompt("Digite a temperatura em " + escala + ":"));
+            
+            // if para escala e fazer a conversão
+            if(escala === "C") {
+                var tempF = (temperatura * 1.8) + 32;
+                document.getElementById("return").innerHTML = "Temperatura equivalente em Fahrenheit: " + tempF.toFixed(2);
+            }else if(escala === "F") {
+                var tempC = (temperatura - 32) / 1.8;
+                document.getElementById("return").innerHTML = "Temperatura equivalente em Celsius: " + tempC.toFixed(2);
+            } else {
+                document.getElementById("return").innerHTML = "Escala inválida.";
+            }
+        }
+    </script>
+</body>
+</html>
