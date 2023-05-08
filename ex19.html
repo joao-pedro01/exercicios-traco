@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 19</title>
+</head>
+<body>
+    <h1>Programa para calcular aumento do salário</h1>
+
+    <div class="form">
+        <label for="salario">Digite o salário:</label>
+        <input type="text" name="input" id="salario" required placeholder="2500,00">
+        <input type="submit" value="Enviar" onclick="calcularAumento();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function calcularAumento() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            var salario = parseFloat(document.getElementById("salario").value);
+            var novoSalario, aumento, percentual;
+
+            // Verifica em qual faixa de aumento o salário se encaixa
+            if (salario <= 999.00) {
+                percentual = 20;
+            } else if (salario <= 2999.00) {
+                percentual = 15;
+            } else if (salario <= 7999.00) {
+                percentual = 10;
+            } else {
+                percentual = 5;
+            }
+
+            // Calcula o novo salário e o aumento
+            aumento = salario * (percentual / 100);
+            novoSalario = salario + aumento;
+
+            // Exibe o resultado na div "return"
+            document.getElementById("return").innerHTML = `Novo salário: R$ ${novoSalario.toFixed(2)}<br>Aumento: R$ ${aumento.toFixed(2)}<br>Percentual de aumento: ${percentual}%`;
+
+        }
+    </script>
+</body>
+</html>
