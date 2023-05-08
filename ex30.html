@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 30</title>
+</head>
+<body>
+    <h1>Aplicação para retornar o número por extenso</h1>
+
+    <div class="form">
+        <label for="num">Digite o número:</label><br>
+        <input type="number" name="input" id="num" placeholder="10"><br><br>
+        <input type="submit" value="Enviar" onclick="numExtenso();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function numExtenso() {
+            event.preventDefault();
+            const numerosPorExtenso = [
+                'zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove',
+                'dez', 'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove'
+            ];
+            const num = parseInt(document.getElementById("num").value);
+
+            const n = parseInt(num);
+            let numeroExtenso = '';
+
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            if (n >= 0 && n <= 19) {
+                numeroExtenso = numerosPorExtenso[n];
+            } else if (n >= 20 && n <= 99) {
+                const dezena = Math.floor(n / 10);
+                const unidade = n % 10;
+
+                if (dezena === 2) {
+                    numeroExtenso += 'vinte';
+                } else if (dezena === 3) {
+                    numeroExtenso += 'trinta';
+                } else if (dezena === 4) {
+                    numeroExtenso += 'quarenta';
+                } else if (dezena === 5) {
+                    numeroExtenso += 'cinquenta';
+                } else if (dezena === 6) {
+                    numeroExtenso += 'sessenta';
+                } else if (dezena === 7) {
+                    numeroExtenso += 'setenta';
+                } else if (dezena === 8) {
+                    numeroExtenso += 'oitenta';
+                } else if (dezena === 9) {
+                    numeroExtenso += 'noventa';
+                }
+
+                if (unidade > 0 && dezena !== 1) {
+                    numeroExtenso += ' e ' + numerosPorExtenso[unidade];
+                } else if (dezena === 1) {
+                    numeroExtenso = numerosPorExtenso[n];
+                }
+            }
+
+            document.getElementById("return").innerHTML = `${numeroExtenso}`;
+        }  
+    </script>
+</body>
+</html>
