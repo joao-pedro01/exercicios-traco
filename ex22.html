@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 22</title>
+</head>
+<body>
+    <h1>Aplicação para calcular a tabuada do número informado</h1>
+
+    <div class="form">
+        <label for="num">Digite o número multiplicador:</label>
+        <input type="number" required name="input" id="num" placeholder="4">
+        <div class="return" id="return">
+            
+        </div>
+        <input type="submit" value="Enviar" onclick="tabuada();">
+    </div>
+    
+    <script>
+        function tabuada() {
+            event.preventDefault();
+            document.getElementById(`return`).innerHTML = "";
+            const num = parseInt(document.getElementById("num").value);
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            for (let i = 1; i <= 10; i++) {
+                document.getElementById(`return`).innerHTML += `<br>${num} x ${i} = ` + num * i;
+            }
+        }
+    </script>
+</body>
+</html>
