@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 12</title>
+</head>
+<body>
+        <h1>Aplicação para calcular equação de 2° grau</h1>
+
+    <div class="form">
+        <label for="coefA1">Digite o coeficiente a:</label>
+        <input type="number" required name="input" id="coefA1" placeholder="1">
+        <label for="coefB1">Digite o coeficiente b:</label>
+        <input type="number" required name="input" id="coefB1" placeholder="0">
+        <label for="notafC">Digite o coeficiente c:</label>
+        <input type="number" required name="input" id="coefC1" placeholder="-9">
+        <div class="return" id="return0">
+            
+        </div>
+
+        <label for="coefA2" style="margin-top: 2rem;">Digite o coeficiente a:</label>
+        <input type="number" required name="input" id="coefA2" placeholder="2">
+        <label for="coefB2">Digite o coeficiente b:</label>
+        <input type="number" required name="input" id="coefB2" placeholder="-4,5">
+        <label for="notafC">Digite o coeficiente c:</label>
+        <input type="number" required name="input" id="coefC2" placeholder="1,7">
+        <div class="return" id="return1">
+            
+        </div>
+        
+        <label for="coefA3" style="margin-top: 2rem;">Digite o coeficiente a:</label>
+        <input type="number" required name="input" id="coefA3" placeholder="1">
+        <label for="coefB3">Digite o coeficiente b:</label>
+        <input type="number" required name="input" id="coefB3" placeholder="3">
+        <label for="notafC">Digite o coeficiente c:</label>
+        <input type="number" required name="input" id="coefC3" placeholder="4">
+        <div class="return" id="return2">
+
+        </div>
+        <input type="submit" value="Enviar" onclick="calcEquacao();">
+    </div>
+    
+    <script>
+        function calcEquacao() {
+            event.preventDefault();
+            const coefA = {
+                0: parseInt(document.getElementById("coefA1").value),
+                1: parseInt(document.getElementById("coefA2").value),
+                2: parseInt(document.getElementById("coefA3").value)
+            };
+            const coefB = {
+                0: parseInt(document.getElementById("coefB1").value),
+                1: parseInt(document.getElementById("coefB2").value),
+                2: parseInt(document.getElementById("coefB3").value)
+            };
+            const coefC = {
+                0: parseInt(document.getElementById("coefC1").value),
+                1: parseInt(document.getElementById("coefC2").value),
+                2: parseInt(document.getElementById("coefC3").value)
+            };
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+            
+            for (let i = 0; i < 3; i++) {
+                let delta = Math.pow(coefB[i], 2) - 4 * coefA[i] * coefC[i];
+                
+                if(delta < 0) {
+                    document.getElementById(`return${i}`).innerHTML = "Esta equação não possui raízes reais";
+                }else {
+                    let x1 = (-coefB[i] + Math.sqrt(delta)) / (2 * coefA[i]);
+                    let x2 = (-coefB[i] - Math.sqrt(delta)) / (2 * coefA[i]);
+                    
+                    document.getElementById(`return${i}`).innerHTML = `X1 = ${x1}<br>`;
+                    document.getElementById(`return${i}`).innerHTML += `X2 = ${x2}`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
