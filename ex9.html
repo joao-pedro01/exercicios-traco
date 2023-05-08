@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício </title>
+</head>
+<body>
+    <h1>Aplicação para converter segundos em hh:mm:ss</h1>
+
+    <div class="form">
+        <label for="segundos">Digite os segundos:</label>
+        <input type="text" name="input" id="segundos" required placeholder="300">
+        <input type="submit" value="Enviar" onclick="converteSegundos();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function converteSegundos() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const totalSegundos = document.getElementById("segundos").value;
+            const horas = Math.floor(totalSegundos / 3600);
+            const minutos = Math.floor((totalSegundos % 3600) / 60);
+            const segundos = totalSegundos % 60;
+
+            document.getElementById("return").innerHTML = `${horas.toString().padStart(2, "0")}:${minutos.toString().padStart(2, "0")}:${segundos.toString().padStart(2, "0")}`;
+        }
+    </script>
+</body>
+</html>
