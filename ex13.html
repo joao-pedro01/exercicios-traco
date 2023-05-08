@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 13</title>
+</head>
+<body>
+    <h1>Aplicação para calcular o valor da conta da operadora de celular</h1>
+
+    <div class="form">
+        <label for="coefA1">Digite a quantidade em minutos:</label>
+        <input type="number" required name="input" id="min1" placeholder="22">
+        <div class="return" id="return0">
+            
+        </div>
+
+        <label for="min2">Digite a quantidade em minutos:</label>
+        <input type="number" required name="input" id="min2" placeholder="103">
+        <div class="return" id="return1">
+            
+        </div>
+        <input type="submit" value="Enviar" onclick="calcConta();">
+    </div>
+    
+    <script>
+        function calcConta() {
+            event.preventDefault();
+            const minutos = [
+                parseInt(document.getElementById("min1").value),
+                parseInt(document.getElementById("min2").value)
+            ];
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            for (let i = 0; i < 2; i++) {
+                let valorTotal = 50.00;
+                if (minutos[i] > 100) {
+                    let valorParc = minutos[i] - 100;
+                    valorParc *= 2.00;
+                    valorTotal += valorParc;
+                }
+                document.getElementById(`return${i}`).innerHTML = "Valor a pagar: R$" + valorTotal.toFixed(2);
+            }
+        }
+    </script>
+</body>
+</html>
