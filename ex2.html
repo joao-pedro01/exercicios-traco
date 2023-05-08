@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h1>Programa para calcular a área, perímetro e diagonal de um retângulo</h1>
+
+    <div class="form">
+        <label for="base">Digite a base do triângulo:</label>
+        <input type="number" name="input" id="base" required placeholder="placeholder">
+        <label for="altura">Digite a altura do triângulo:</label>
+        <input type="number" name="input" id="altura" required placeholder="placeholder">
+        <input type="submit" value="Enviar" onclick="calcTriangulo();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function calcTriangulo() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            // lê a entrada do usuário para a base e altura do retângulo
+            const base = parseFloat(document.getElementById("base").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+
+            // calcula a área, perímetro e diagonal do retângulo
+            var area = base * altura;
+            var perimetro = 2 * (base + altura);
+            var diagonal = Math.sqrt(base ** 2 + altura ** 2);
+
+            // exibe os resultados com 4 casas decimais
+            document.getElementById("return").innerHTML = `Área: ${area.toFixed(4)}<br>`;
+            document.getElementById("return").innerHTML += `Perímetro: ${perimetro.toFixed(4)}<br>`;
+            document.getElementById("return").innerHTML += `Diagonal: ${diagonal.toFixed(4)}`;
+        }
+    </script>
+</body>
+</html>
