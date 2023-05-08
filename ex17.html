@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 17</title>
+</head>
+<body>
+    <h1>Programa para verificar se um números é multiplo do outro</h1>
+
+    <div class="form">
+        <label for="num1">Digite o número:</label>
+        <input type="text" name="input" id="num1" required placeholder="6">
+        <label for="num2">Digite o número:</label>
+        <input type="text" name="input" id="num2" required placeholder="24">
+        <input type="submit" value="Enviar" onclick="multiplos();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function multiplos() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const num = [
+                parseInt(document.getElementById("num1").value),
+                parseInt(document.getElementById("num2").value) 
+            ];
+
+            if (num[0] % num[1] === 0 || num[1] % num[0] === 0) {
+                document.getElementById("return").innerHTML = `São um número multiplo`;
+            } else {
+                document.getElementById("return").innerHTML = `Os números não são múltiplos`;
+            }
+        }
+    </script>
+</body>
+</html>
