@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 25</title>
+</head>
+<body>
+    <h1>Aplicação que vai exibir o signo</h1>
+
+    <div class="form">
+        <label for="data">Digite a data de nascimento:</label>
+        <input type="date" required name="input" id="data">
+        <input type="submit" value="Enviar" onclick="signo();">
+        <div class="return" id="return">
+            
+        </div>
+    </div>
+    
+    <script>
+        function signo() {
+            event.preventDefault();
+            const dataHtml = document.getElementById("data").value;
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const dateObj = new Date(dataHtml);            
+            const dia = dateObj.getDate();
+            const mes = dateObj.getMonth() + 1; // Adiciona 1 porque os meses são indexados a partir de 0
+            const ano = dateObj.getFullYear();
+            var signo;
+
+
+            if(mes > 12 || mes < 0) {
+                alert('Por favor, preencha um mes válido.');
+                return false;
+            }
+
+            switch (mes) {
+                case 1:
+                    if (dia >= 1 && dia <= 20) {
+                        signo = "Capricornio";
+                    }else {
+                        signo = "Aquário";
+                    }
+
+                    break;
+                case 2:
+                    if (dia >= 1 && dia <= 18) {
+                        signo = "Peixes";
+                    }else {
+                        signo = "Aquário";
+                    }
+                    
+                    break;
+                case 3: 
+                    if (dia >= 0 && dia <= 20) {
+                        signo = "Peixes";
+                    }else {
+                        signo = "Áries";
+                    }
+                    
+                    break;
+                case 4:
+                    if (dia >= 0 && dia <= 20) {
+                        signo = "Áries";
+                    }else {
+                        signo = "Touro";
+                    }
+                    
+                    break;
+                
+                case 5:
+                    if (dia >= 0 && dia <= 20) {
+                        signo = "Touro";
+                    }else {
+                        signo = "Gêmeos";
+                    }
+
+                    break;
+                    
+                case 6:
+                    if (dia >= 1 && dia <= 20) {
+                        signo = "Gêmeos";
+                    }else {
+                        signo = "Câncer";
+                    }
+                    
+                    break;
+                
+                case 7:
+                    if (dia >= 1 && dia <= 22) {
+                        signo = "Câncer";
+                    }else {
+                        signo = "Leão";
+                    }
+                    
+                    break;
+                case 8:
+                    if (dia >= 1 && dia <= 22) {
+                        signo = "Leão";
+                    }else {
+                        signo = "Virgem";
+                    }
+                    
+                    break;
+                case 9:
+                    if (dia >= 1 && dia <= 22) {
+                        signo = "Virgem";
+                    }else {
+                        signo = "Libra";
+                    }
+                    
+                    break;
+                case 10:
+                    if (dia >= 1 && dia <= 22) {
+                        signo = "Libra";
+                    }else {
+                        signo = "Escorpião";
+                    }
+                    
+                    break;
+                case 11:
+                    if (dia >= 1 && dia <= 21) {
+                        signo = "Escorpião";
+                    }else {
+                        signo = "Sagitário";
+                    }
+                          
+                    break;
+                case 12:
+                    if (dia >= 1 && dia <= 21) {
+                        signo = "Sagitário";
+                    }else {
+                        signo = "Capricórnio";
+                    }
+                    
+                    break;
+            }
+            document.getElementById(`return`).innerHTML = `Signo: ${signo}`;
+        }
+    </script>
+</body>
+</html>
