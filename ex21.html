@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 21</title>
+</head>
+<body>
+    <h1>Programa para mostrar pares até X</h1>
+
+    <div class="form">
+        <label for="num">Digite o valor de X:</label>
+        <input type="text" name="input" id="num" required placeholder="8">
+        <input type="submit" value="Enviar" onclick="main();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function main() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const num = document.getElementById("num").value;
+
+            // Loop para imprimir os números pares
+            for (let i = 1; i <= num; i++) {
+                // Verifica se o número é par
+                if (i % 2 === 0) {
+                    document.getElementById("return").innerHTML += `${i}<br>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
