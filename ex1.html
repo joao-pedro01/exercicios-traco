@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Exercicio 1</title>
 </head>
 <body>
-    <form>
-        <input type="text" name="largura" id="largura"><br>
-        <input type="number" name="comprimento" id="comprimento"><br>
-        <input type="number" name="valor" id="valor"><br>
-        <input type="text" id="name" name="name"><br>
-        <input type="submit" value="Enviar"><br>
-        <input type="button" onclick="main();">
-    </form>
+    <div class="form"> 
+        <input type="number" name="input" id="largura" placeholder="10,00">
+        <input type="number" name="input" id="comprimento" placeholder="30,00">
+        <input type="number" name="input" id="valor" placeholder="200,00">
+        <input type="submit" onclick="main();">
+    </div> 
 
-    <div id="output">
+    <div id="return">
 
     </div>
 </body>
@@ -30,7 +29,10 @@
     
         var area = comprimento * largura;
         var preco = area * valor;
-        var html = document.getElementById('output').innerHTML;
+        
+        document.getElementById("return").innerHTML = `Área do terreno: ${area.toFixed(2)}<br>`;
+        document.getElementById("return").innerHTML += `Preço do terreno: ${preco.toFixed(2)}`;
+
         console.log(preco);
         console.log(area);
     }
