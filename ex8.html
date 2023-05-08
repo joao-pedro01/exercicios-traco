@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Exercício 8</title>
 </head>
 <body>
@@ -31,7 +32,17 @@
                 'c': parseInt(document.getElementById("medidaC").value)
             };
 
-            
+            // Calcula as áreas
+            const areaQuadrado = medida.a * medida.a;
+            const areaTriangulo = (medida.a * medida.b) / 2;
+            const areaTrapezio = ((medida.a + medida.b) * medida.c) / 2;
+
+            console.log(areaQuadrado)
+            // Exibe os resultados com 4 casas decimais
+            document.getElementById('return').innerHTML =  `Área do quadrado: ${areaQuadrado.toFixed(4)}<br>`;
+            document.getElementById('return').innerHTML += `Área do triangulo: ${areaTriangulo.toFixed(4)}<br>`;
+            document.getElementById('return').innerHTML += `Área do trapezio: ${areaTrapezio.toFixed(4)}<br>`;
+           
         }
     </script>
 </body>
