@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 20</title>
+</head>
+<body>
+    <h1>Soma dos números</h1>
+
+    <div class="form">
+        <label for="inicio">Digite o número inicial:</label>
+        <input type="text" name="input" id="inicio" required placeholder="5">
+        <label for="fim">Digite o número final:</label>
+        <input type="text" name="input" id="fim" required placeholder="19">
+        <input type="submit" value="Enviar" onclick="soma();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function soma() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            var inicio = parseInt(document.getElementById("inicio").value);
+            var fim = parseInt(document.getElementById("fim").value);
+            var soma = 0;
+            
+            // Calcula a soma dos números entre "inicio" e "fim"
+            for (var i = inicio; i <= fim; i++) {
+                soma += i;
+            }
+
+
+            document.getElementById("return").innerHTML = `A soma dos números entre ${inicio} e fim é: ${soma}`;
+        }
+    </script>
+</body>
+</html>
