@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Exercício 3</title>
 </head>
 <body>
     <h1>Aplicação para informar idade média de 2 pessoas</h1>
 
-    <label for="nome1">Digite o nome da primeira pessoa:</label><br>
-    <input type="text" name="input" id="nome1" placeholder="Digite o nome"><br><br>
-    
-    <label for="idade1">Digite o nome da primeira pessoa:</label><br>
-    <input type="number" name="input" id="idade1" placeholder="Digite a idade"><br><br>
-    
-    <label for="nome2">Digite o nome da primeira pessoa:</label><br>
-    <input type="text" name="input" id="nome2" placeholder="Digite o nome"><br><br>
-    
-    <label for="idade2">Digite o nome da primeira pessoa:</label><br>
-    <input type="number" name="input" id="idade2" placeholder="Digite a idade"><br><br>
-    <input type="submit" value="Enviar" onclick="main();">
+    <div class="form">
+        <label for="nome1">Digite o nome da primeira pessoa:</label><br>
+        <input type="text" name="input" id="nome1" placeholder="Digite o nome"><br><br>
+        
+        <label for="idade1">Digite o nome da primeira pessoa:</label><br>
+        <input type="number" name="input" id="idade1" placeholder="Digite a idade"><br><br>
+        
+        <label for="nome2">Digite o nome da primeira pessoa:</label><br>
+        <input type="text" name="input" id="nome2" placeholder="Digite o nome"><br><br>
+        
+        <label for="idade2">Digite o nome da primeira pessoa:</label><br>
+        <input type="number" name="input" id="idade2" placeholder="Digite a idade"><br><br>
+        <input type="submit" value="Enviar" onclick="mediaIdade();">
+    </div>
 
 
     <div id="return">
@@ -28,15 +31,15 @@
     </div>
 
     <script>
-        function main() {
-            var nome = {
-                0: document.querySelector("#nome1").value,
-                1: document.querySelector("#nome2").value
-            };
-            var idade = {
-                0: parseFloat(document.querySelector("#idade1").value),
-                1: parseFloat(document.querySelector("#idade2").value)
-            };
+        function mediaIdade() {
+            var nome = [
+                document.getElementById("nome1").value,
+                document.getElementById("nome2").value
+            ];
+            var idade = [
+                parseFloat(document.getElementById("idade1").value),
+                parseFloat(document.getElementById("idade2").value)
+            ];
             var media = ((idade[0] + idade[1]) / 2).toFixed(1);
 
             document.getElementById("return").innerHTML = `A idade média de ${nome[0]} e ${nome[1]} é de ${media} anos`;
