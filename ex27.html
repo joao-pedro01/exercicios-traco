@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 27</title>
+</head>
+<body>
+    <h1>Esse programa irá retornar se a palavra é palíndroma ou não</h1>
+
+    <div class="form">
+        <label for="frase">DIgite a palavra:</label>
+        <input type="text" name="input" id="frase" placeholder="Osso">
+        <input type="submit" value="Enviar" onclick="fraseInvertida();">
+    </div>
+
+    <div id="return">
+
+    </div>
+
+    <script>
+        function fraseInvertida() {
+            const fraseInput = document.getElementById("frase").value;
+            var frase = fraseInput.toLowerCase();
+            var fraseInvertida = "";
+        
+            for (let i = frase.length - 1; i >= 0; i--) {
+                fraseInvertida += frase[i];
+            }
+
+            if(frase === fraseInvertida) {
+                document.getElementById(`return`).innerHTML = "A palavra é palíndroma.";
+            } else {
+                document.getElementById(`return`).innerHTML = "A palavra não é palíndroma.";
+            }        
+        }
+    </script>
+</body>
+</html>
