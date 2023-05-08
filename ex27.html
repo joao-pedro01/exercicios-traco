@@ -12,7 +12,7 @@
 
     <div class="form">
         <label for="frase">DIgite a palavra:</label>
-        <input type="text" name="input" id="frase" placeholder="Osso">
+        <input type="text" name="input" id="frase" required placeholder="Osso">
         <input type="submit" value="Enviar" onclick="fraseInvertida();">
     </div>
 
@@ -22,6 +22,21 @@
 
     <script>
         function fraseInvertida() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
             const fraseInput = document.getElementById("frase").value;
             var frase = fraseInput.toLowerCase();
             var fraseInvertida = "";
