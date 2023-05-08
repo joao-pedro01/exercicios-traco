@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício </title>
+</head>
+<body>
+    <h1>title</h1>
+
+    <div class="form">
+        <label for="num1">Digite a distância:</label>
+        <input type="number" name="input" id="num1" required placeholder="83,21">
+        <label for="num2">Digite a distância:</label>
+        <input type="number" name="input" id="num2" required placeholder="79,53">
+        <label for="num3">Digite a distância:</label>
+        <input type="number" name="input" id="num3" required placeholder="89,15">
+        <input type="submit" value="Enviar" onclick="calcMaiorDistancia();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function calcMaiorDistancia() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const distancia = [
+                document.getElementById("num1").value,
+                document.getElementById("num2").value,
+                document.getElementById("num3").value,
+            ];
+            var maior;
+
+            if(distancia[0] >= distancia[1] && distancia[0] >= distancia[2]) {
+                maior = distancia[0];
+            } else if(distancia[1] >= distancia[2] && distancia[1] >= distancia[0]) {
+                maior = distancia[1]
+            } else {
+                maior = distancia[2]
+            }
+
+            document.getElementById("return").innerHTML = `Distância maior: ${maior}`;
+        }
+    </script>
+</body>
+</html>
