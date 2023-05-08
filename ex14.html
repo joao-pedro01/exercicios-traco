@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 14</title>
+</head>
+<body>
+    <h1>Programa para calcular o troco no processo de pagamento de um produto de uma mercearia</h1>
+
+    <div class="form">
+        <label for="precoUnit">Digite o preço unitário:</label>
+        <input type="number" name="input" id="precoUnit" required placeholder="8,00">
+        <label for="qnt">Digite a quantidade comprada:</label>
+        <input type="number" name="input" id="qnt" required placeholder="2">
+        <label for="dinheiro">Digite quantidade de dinheiro recebido:</label>
+        <input type="number" name="input" id="dinheiro" required placeholder="20,00">
+        <input type="submit" value="Enviar" onclick="calcTroco();">
+    </div>
+
+    <div id="return">
+
+    </div>
+    
+    <script>
+        function calcTroco() {
+            event.preventDefault();
+            const inputs = document.querySelectorAll('input[required]');
+            let valid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === '') {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            const precoUnit= document.getElementById("precoUnit").value;
+            const quantidade = document.getElementById("qnt").value;
+            const dinheiroRecebido = document.getElementById("dinheiro").value;
+            var valorTotal = precoUnit * quantidade;
+
+            if(dinheiroRecebido >= valorTotal) {
+                let troco = dinheiroRecebido - valorTotal;
+
+                document.getElementById("return").innerHTML = `Troco: R$ ${troco}`;
+            } else {
+                let troco = valorTotal - dinheiroRecebido;
+
+                document.getElementById("return").innerHTML = `Dinheiro insuficiente. Faltam ${troco} reais`;
+            }
+        }
+    </script>
+</body>
+</html>
